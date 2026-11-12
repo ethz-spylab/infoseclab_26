@@ -32,7 +32,7 @@ class ResNetDiscrete(Defense):
         x = x.unsqueeze(-1)
 
         # discretize into 20 bins
-        thresholds = torch.from_numpy(np.arange(0, 1, 1/N_BINS)).to(x.device).float()
+        thresholds = torch.from_numpy(np.arange(0, 1, 1/N_BINS)).float().to(x.device)
         gt_threshold = x > thresholds
         x = gt_threshold.float()
 
